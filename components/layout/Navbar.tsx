@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Search, Bell, Users, ShoppingBag, Home, Plus } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -18,9 +19,14 @@ export default function Navbar() {
       <div className="flex items-center gap-2 flex-1 max-w-xl mx-auto">
         <Link
           href="/explore"
-          className="flex-shrink-0 w-9 h-9 flex items-center justify-center rounded-lg bg-[#141414] border border-[#2A2A2A] hover:bg-[#1A1A1A] transition-colors"
+          className={cn(
+            'flex-shrink-0 w-9 h-9 flex items-center justify-center rounded-lg border transition-colors',
+            pathname === '/explore'
+              ? 'bg-white border-white text-black'
+              : 'bg-[#141414] border-[#2A2A2A] text-white/70 hover:bg-[#1A1A1A]'
+          )}
         >
-          <Home size={16} className="text-white/70" />
+          <Home size={16} />
         </Link>
         <div className="relative flex-1">
           <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40 pointer-events-none" />
@@ -39,7 +45,12 @@ export default function Navbar() {
       <div className="flex items-center gap-2 ml-6 flex-shrink-0">
         <Link
           href="/create-event"
-          className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#141414] border border-[#2A2A2A] text-xs text-white/70 hover:bg-[#1A1A1A] transition-colors"
+          className={cn(
+            'hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs transition-colors',
+            pathname === '/create-event'
+              ? 'bg-white border-white text-black font-medium'
+              : 'bg-[#141414] border-[#2A2A2A] text-white/70 hover:bg-[#1A1A1A]'
+          )}
         >
           <Plus size={13} />
           Create Event
@@ -54,7 +65,10 @@ export default function Navbar() {
         </button>
 
         <Link href="/profile">
-          <div className="w-8 h-8 rounded-full overflow-hidden bg-[#2A2A2A] ring-1 ring-[#3A3A3A] hover:ring-white/30 transition-all">
+          <div className={cn(
+            'w-8 h-8 rounded-full overflow-hidden bg-[#2A2A2A] ring-1 transition-all',
+            pathname.startsWith('/profile') ? 'ring-white' : 'ring-[#3A3A3A] hover:ring-white/30'
+          )}>
             <img
               src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=100"
               alt="Profile"

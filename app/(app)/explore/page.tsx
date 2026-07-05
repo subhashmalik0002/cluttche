@@ -4,7 +4,7 @@ import { useState } from 'react';
 import EventCard from '@/components/cards/EventCard';
 import HostCard from '@/components/cards/HostCard';
 import { mockEvents, featuredEvent, cities, techFutureEvent } from '@/lib/mockData';
-import { Bookmark, MapPin, BookOpen } from 'lucide-react';
+import { Bookmark, MapPin } from 'lucide-react';
 import Link from 'next/link';
 
 const secondaryEvents = mockEvents.slice(1, 3);

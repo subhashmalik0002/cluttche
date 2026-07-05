@@ -52,10 +52,10 @@ export default function CreateEventPage() {
   const [themeColor, setThemeColor] = useState('#C26B6B');
   const [ticketPrice, setTicketPrice] = useState(5);
   const [teamMembers, setTeamMembers] = useState(5);
-  const [startTime] = useState('09:00 am');
-  const [startDate] = useState('Thu, 9 April');
-  const [endTime] = useState('09:00 am');
-  const [endDate] = useState('Thu, 9 April');
+  const startTime = '09:00 am';
+  const startDate = 'Thu, 9 April';
+  const endTime = '09:00 am';
+  const endDate = 'Thu, 9 April';
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -1,9 +1,18 @@
 'use client';
 
-import { useState } from 'react';
 import { Pencil, Instagram, Github, Share2 } from 'lucide-react';
 import AccountSettingsPanel from '@/components/profile/AccountSettingsPanel';
 import PillTag from '@/components/ui/PillTag';
+
+const QR_PATTERN = [
+  1,1,1,1,1,1,1,
+  1,0,0,0,0,0,1,
+  1,0,1,1,1,0,1,
+  1,0,1,0,1,0,1,
+  1,0,1,1,1,0,1,
+  1,0,0,0,0,0,1,
+  1,1,1,1,1,1,1,
+].map(Boolean);
 
 const skills = [
   'Full Stack Development',
@@ -45,8 +54,6 @@ const galleryImages = [
 ];
 
 export default function ProfilePage() {
-  const [settingsOpen, setSettingsOpen] = useState(false);
-
   return (
     <div className="flex h-full min-h-0">
       {/* Main profile content */}
@@ -76,7 +83,6 @@ export default function ProfilePage() {
                     Share
                   </button>
                   <button
-                    onClick={() => setSettingsOpen(true)}
                     className="flex items-center gap-1.5 px-3 py-2 bg-white text-black rounded-lg text-xs font-medium hover:bg-white/90 transition-colors"
                   >
                     View Profile →
@@ -208,10 +214,10 @@ export default function ProfilePage() {
           {/* QR placeholder */}
           <div className="flex-shrink-0 w-28 h-28 bg-white rounded-xl flex items-center justify-center overflow-hidden">
             <div className="grid grid-cols-7 gap-0.5 p-1">
-              {Array.from({ length: 49 }).map((_, i) => (
+              {QR_PATTERN.map((filled, i) => (
                 <div
                   key={i}
-                  className={`w-3 h-3 rounded-sm ${Math.random() > 0.5 ? 'bg-black' : 'bg-white'}`}
+                  className={`w-3 h-3 rounded-sm ${filled ? 'bg-black' : 'bg-white'}`}
                 />
               ))}
             </div>
