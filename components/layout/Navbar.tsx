@@ -38,7 +38,7 @@ export default function Navbar() {
       {/* Right cluster */}
       <div className="flex items-center gap-2 ml-6 flex-shrink-0">
         <Link
-          href="/explore"
+          href="/create-event"
           className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#141414] border border-[#2A2A2A] text-xs text-white/70 hover:bg-[#1A1A1A] transition-colors"
         >
           <Plus size={13} />
